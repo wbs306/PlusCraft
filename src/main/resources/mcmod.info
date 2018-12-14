@@ -1,0 +1,16 @@
+[
+{
+  "modid": "pluscraft",
+  "name": "PlusCraft",
+  "description": "Makes Minecraft more instering.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Wbs"],
+  "credits": "wbs",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
