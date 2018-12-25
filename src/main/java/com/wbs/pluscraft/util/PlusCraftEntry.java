@@ -26,7 +26,7 @@ public class PlusCraftEntry {
 	}
 
 	@EventHandler
-	public void inti(FMLInitializationEvent event) {
+	public void init(FMLInitializationEvent event) {
 
 	}
 
