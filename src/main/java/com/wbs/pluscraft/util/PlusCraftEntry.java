@@ -27,7 +27,7 @@ public class PlusCraftEntry {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-
+		proxy.init(event);
 	}
 
 	@EventHandler
