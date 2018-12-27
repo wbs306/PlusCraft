@@ -2,9 +2,9 @@ package com.wbs.pluscraft.client;
 
 import net.minecraftforge.common.MinecraftForge;
 
-public class EventHandler {
+public class EventPublish {
 
-	public EventHandler() {
+	public EventPublish() {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 }
