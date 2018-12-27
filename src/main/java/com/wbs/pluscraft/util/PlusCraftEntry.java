@@ -1,21 +1,22 @@
 package com.wbs.pluscraft.util;
 
-
 import com.wbs.pluscraft.ModResources;
 import com.wbs.pluscraft.common.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.*;
+
+import java.io.IOException;
 
 @Mod(modid = ModResources.MOD_ID, name = ModResources.MOD_NAME, version = ModResources.MOD_VERSION)
 public class PlusCraftEntry {
 
 	@Instance(ModResources.MOD_ID)
 	public static PlusCraftEntry instance;
+
+	public static SocketClient client;
 
 	@SidedProxy(clientSide = "com.wbs.pluscraft.client.ClientProxy", serverSide = "com.wbs.pluscraft.common.CommonProxy")
 	private static CommonProxy proxy;
@@ -33,5 +34,16 @@ public class PlusCraftEntry {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 
+	}
+
+	@EventHandler
+	public void serverStaring(FMLServerStartingEvent event) throws IOException {
+		client = new SocketClient(ModResources.IP, ModResources.PORT);
+		client.sendMessage("Connect from event " + event.description());
+	}
+
+	@EventHandler
+	public void serverStopping(FMLServerStoppingEvent event) throws IOException {
+		client.disconnect();
 	}
 }
