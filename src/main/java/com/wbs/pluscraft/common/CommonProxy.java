@@ -1,6 +1,6 @@
 package com.wbs.pluscraft.common;
 
-import com.wbs.pluscraft.client.EventPublish;
+import com.wbs.pluscraft.event.EventPublish;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;

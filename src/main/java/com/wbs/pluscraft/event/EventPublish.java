@@ -1,4 +1,4 @@
-package com.wbs.pluscraft.client;
+package com.wbs.pluscraft.event;
 
 import net.minecraftforge.common.MinecraftForge;
 
