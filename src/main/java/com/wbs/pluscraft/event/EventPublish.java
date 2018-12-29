@@ -6,5 +6,6 @@ public class EventPublish {
 
 	public EventPublish() {
 		MinecraftForge.EVENT_BUS.register(this);
+		MinecraftForge.EVENT_BUS.register(new BlockEventPublish());
 	}
 }
