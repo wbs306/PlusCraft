@@ -36,6 +36,7 @@ public class PlusCraftEntry {
 
 	@EventHandler
 	public void serverStaring(FMLServerStartingEvent event) throws IOException {
+		new AdapterPublisher();
 		AdapterPublisher.publishMessage(event.getEventType());
 	}
 

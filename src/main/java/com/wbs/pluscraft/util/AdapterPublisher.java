@@ -13,12 +13,8 @@ public class AdapterPublisher {
 
 	private static SocketClient client;
 
-	static {
-		try {
-			client = new SocketClient(ModResources.IP, ModResources.PORT);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public AdapterPublisher() throws IOException {
+		client = new SocketClient(ModResources.IP, ModResources.PORT);
 	}
 
 	public static void publishMessage(String message) throws IOException {
