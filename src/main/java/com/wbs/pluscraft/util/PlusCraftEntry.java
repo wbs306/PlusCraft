@@ -16,8 +16,6 @@ public class PlusCraftEntry {
 	@Instance(ModResources.MOD_ID)
 	public static PlusCraftEntry instance;
 
-	public static SocketClient client;
-
 	@SidedProxy(clientSide = "com.wbs.pluscraft.client.ClientProxy", serverSide = "com.wbs.pluscraft.common.CommonProxy")
 	private static CommonProxy proxy;
 
@@ -38,12 +36,11 @@ public class PlusCraftEntry {
 
 	@EventHandler
 	public void serverStaring(FMLServerStartingEvent event) throws IOException {
-		client = new SocketClient(ModResources.IP, ModResources.PORT);
-		client.sendMessage("Connect from event " + event.description());
+		AdapterPublisher.publishMessage(event.getEventType());
 	}
 
 	@EventHandler
 	public void serverStopping(FMLServerStoppingEvent event) throws IOException {
-		client.disconnect();
+		AdapterPublisher.publishMessage("stop");
 	}
 }
