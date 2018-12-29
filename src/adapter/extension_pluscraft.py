@@ -1,5 +1,5 @@
 # noinspection PyInterpreter
-import time, threading, subprocess, socket
+import time, threading, subprocess, socket, json
 from scratch3_adapter import settings
 from scratch3_adapter.core_extension import Extension
 
@@ -22,13 +22,13 @@ class PlusCraftExtension(Extension):
                 is_conn = True
             data = conn.recv(1024)
             mesg = str(data, 'UTF-8')
-            self.logger.info(mesg)
             if mesg == "quit":
                 conn.close()
                 is_conn = False
             else:
                 conn.send(b"OK\n")
-                message = {'message':mesg, 'topic':'eim'}
+                mesg_json = json.loads(mesg)
+                message = {'message':mesg_json, 'topic':'eim'}
                 self.publish(message)
         time.sleep(1)
                 
