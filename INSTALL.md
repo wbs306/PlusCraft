@@ -22,7 +22,7 @@ Windows:
 出现`BUILD SUCCESSFUL`即编译完成
 
 ###安装
-进入到`build/libs`目录下，`pluscraft-0.1.jar`为编译产物，将其复制到Minecraft目录下(`.minecraft`)的mods文件夹内即可
+进入到`build/libs`目录下，`pluscraft-0.1.jar`为编译产物，将其复制到Minecraft目录下(`.minecraft`)的mods文件夹内即可。另外还需要将`src/adapter/extension_pluscraft.py`这个文件放入`scratch-adapter`的`extension`目录下。
 
 ###参与开发
 
