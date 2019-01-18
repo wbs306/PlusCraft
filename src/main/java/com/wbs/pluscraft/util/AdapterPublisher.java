@@ -40,7 +40,7 @@ public class AdapterPublisher {
 		json.add("position", position);
 		json.addProperty("block", state.getBlock().getUnlocalizedName());
 		json.addProperty("action", action);
-		json.addProperty("palyer", player.getName());
+		json.addProperty("player", player.getName());
 		publishJson(json);
 	}
 
