@@ -44,6 +44,13 @@ public class AdapterPublisher {
 		publishJson(json);
 	}
 
+	public static void publishPlayerEvent(String action, EntityPlayer player) {
+		JsonObject json = new JsonObject();
+		json.addProperty("type", "event");
+		json.addProperty("action", action);
+		json.addProperty("player", player.getName());
+	}
+
 	public static void publishJson(JsonObject json) throws IOException {
 		if (json.has("type"))
 			client.sendMessage(json.toString());
