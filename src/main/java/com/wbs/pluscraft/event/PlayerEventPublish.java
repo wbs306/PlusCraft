@@ -11,7 +11,7 @@ public class PlayerEventPublish {
 
 	@SubscribeEvent
 	public void onPlayerGetAdvancement(AdvancementEvent event) throws IOException {
-		JsonObject playerJson = EventJson.getPlayerJson("get_advancement", event.getEntity().world, event.getEntityPlayer());
+		JsonObject playerJson = EventJson.getPlayerJson("get_advancement", event);
 		playerJson.addProperty("advancement", event.getAdvancement().toString());
 		AdapterPublisher.publishJson(playerJson);
 	}

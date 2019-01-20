@@ -12,14 +12,14 @@ public class BlockEventPublish {
 
 	@SubscribeEvent
 	public void onBlockBreak(BlockEvent.BreakEvent event) throws IOException {
-		JsonObject blockJson = EventJson.getBlockJson("break", event.getWorld(), event.getPos(), event.getState());
+		JsonObject blockJson = EventJson.getBlockJson("break", event);
 		blockJson.addProperty("player", event.getPlayer().getName());
 		AdapterPublisher.publishJson(blockJson);
 	}
 
 	@SubscribeEvent
 	public void onBlockPlaced(BlockEvent.PlaceEvent event) throws IOException {
-		JsonObject blockJson = EventJson.getBlockJson("place", event.getWorld(), event.getPos(), event.getState());
+		JsonObject blockJson = EventJson.getBlockJson("place", event);
 		blockJson.addProperty("player", event.getPlayer().getName());
 		AdapterPublisher.publishJson(blockJson);
 	}

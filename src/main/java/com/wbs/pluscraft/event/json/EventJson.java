@@ -1,10 +1,9 @@
 package com.wbs.pluscraft.event.json;
 
 import com.google.gson.JsonObject;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.world.BlockEvent;
 
 public class EventJson {
 
@@ -23,22 +22,22 @@ public class EventJson {
 		return position;
 	}
 
-	public static JsonObject getBlockJson(String action, World world, BlockPos pos, IBlockState state) {
+	public static JsonObject getBlockJson(String action, BlockEvent event) {
 		JsonObject blockJson = getEventJson("block_event");
 		blockJson.addProperty("action", action);
-		blockJson.addProperty("world", world.getWorldType().getName());
-		blockJson.addProperty("biome", world.getBiome(pos).getBiomeName());
-		blockJson.addProperty("block", state.getBlock().getUnlocalizedName());
-		blockJson.add("position", getPosition(pos));
+		blockJson.addProperty("world", event.getWorld().getWorldType().getName());
+		blockJson.addProperty("biome", event.getWorld().getBiome(event.getPos()).getBiomeName());
+		blockJson.addProperty("block", event.getState().getBlock().getUnlocalizedName());
+		blockJson.add("position", getPosition(event.getPos()));
 
 		return blockJson;
 	}
 
-	public static JsonObject getPlayerJson(String action, World world, EntityPlayer player) {
+	public static JsonObject getPlayerJson(String action, PlayerEvent event) {
 		JsonObject playerJson = getEventJson("player_event");
 		playerJson.addProperty("action", action);
-		playerJson.addProperty("world", world.getWorldType().getName());
-		playerJson.addProperty("player", player.getName());
+		playerJson.addProperty("world", event.getEntity().world.getWorldType().getName());
+		playerJson.addProperty("player", event.getEntityPlayer().getName());
 
 		return playerJson;
 	}
