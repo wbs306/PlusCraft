@@ -46,7 +46,7 @@ public class PlayerEventPublish {
 		JsonObject item = new JsonObject();
 		NonNullList<ItemStack> inventory = event.getContainer().getInventory();
 		for (int i = 0; i < inventory.size(); ++i)
-			item.addProperty("item_" + i + 1, inventory.get(i).getUnlocalizedName());
+			item.addProperty("item_" + (i + 1), inventory.get(i).getUnlocalizedName());
 		playerJson.add("items", item);
 		AdapterPublisher.publishJson(playerJson);
 	}
