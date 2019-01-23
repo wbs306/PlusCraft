@@ -26,7 +26,7 @@ public class PlusCraftEntry {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		proxy.init(event);
+
 	}
 
 	@EventHandler
@@ -38,6 +38,11 @@ public class PlusCraftEntry {
 	public void serverStaring(FMLServerStartingEvent event) throws IOException {
 		new AdapterPublisher();
 		AdapterPublisher.publishMessage(event.getEventType());
+	}
+
+	@EventHandler
+	public void serverStarted(FMLServerStartedEvent event) {
+		proxy.serverStarted(event);
 	}
 
 	@EventHandler
