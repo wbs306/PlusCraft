@@ -28,9 +28,11 @@ public class PlayerEventPublish {
 
 	@SubscribeEvent
 	public void onPlayerCritialHit(CriticalHitEvent event) throws IOException {
-		JsonObject playerJson = EventJson.getPlayerJson("critical_hit", event);
-		playerJson.addProperty("target", event.getTarget().getName());
-		AdapterPublisher.publishJson(playerJson);
+		if (event.isVanillaCritical()) {
+			JsonObject playerJson = EventJson.getPlayerJson("critical_hit", event);
+			playerJson.addProperty("target", event.getTarget().getName());
+			AdapterPublisher.publishJson(playerJson);
+		}
 	}
 
 	@SubscribeEvent
