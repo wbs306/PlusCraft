@@ -72,7 +72,6 @@ public class PlayerEventPublish {
 		playerJson.addProperty("block", event.getItemStack().getUnlocalizedName());
 		JsonObject position = EventJson.getPosition(event.getPos());
 		playerJson.add("position", position);
-		playerJson.addProperty("world", event.getWorld().getProviderName());
 		AdapterPublisher.publishJson(playerJson);
 	}
 
@@ -83,7 +82,6 @@ public class PlayerEventPublish {
 		playerJson.addProperty("block", event.getItemStack().getUnlocalizedName());
 		JsonObject position = EventJson.getPosition(event.getPos());
 		playerJson.add("position", position);
-		playerJson.addProperty("world", event.getWorld().getProviderName());
 		AdapterPublisher.publishJson(playerJson);
 	}
 

@@ -24,7 +24,7 @@ public class BlockEventPublish {
 		AdapterPublisher.publishJson(blockJson);
 	}
 
-	@SubscribeEvent
+	//@SubscribeEvent
 	public void onBlockNotifiedByNeighbor(BlockEvent.NeighborNotifyEvent event) throws IOException{
 		JsonObject blockJson = EventJson.getBlockJson("notified", event);
 		blockJson.addProperty("side", event.getNotifiedSides().toString());

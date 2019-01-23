@@ -2,6 +2,7 @@ package com.wbs.pluscraft.event.json;
 
 import com.google.gson.JsonObject;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
 
@@ -25,7 +26,7 @@ public class EventJson {
 	public static JsonObject getBlockJson(String action, BlockEvent event) {
 		JsonObject blockJson = getEventJson("block_event");
 		blockJson.addProperty("action", action);
-		blockJson.addProperty("world", event.getWorld().getWorldType().getName());
+		blockJson.addProperty("world", getWorldName(event.getWorld(), event.getPos()));
 		blockJson.addProperty("biome", event.getWorld().getBiome(event.getPos()).getBiomeName());
 		blockJson.addProperty("block", event.getState().getBlock().getUnlocalizedName());
 		blockJson.add("position", getPosition(event.getPos()));
@@ -36,9 +37,18 @@ public class EventJson {
 	public static JsonObject getPlayerJson(String action, PlayerEvent event) {
 		JsonObject playerJson = getEventJson("player_event");
 		playerJson.addProperty("action", action);
-		playerJson.addProperty("world", event.getEntity().world.getWorldType().getName());
+		playerJson.addProperty("world", getWorldName(event.getEntityPlayer().world, event.getEntityPlayer().getPosition()));
 		playerJson.addProperty("player", event.getEntityPlayer().getName());
 
 		return playerJson;
+	}
+
+	private static String getWorldName(World world, BlockPos pos) {
+		String name = world.getBiome(pos).getBiomeName();
+		if (name.equals("Hell"))
+			return name;
+		else if (name.equals("The End"))
+			return name;
+		return "Main World";
 	}
 }
