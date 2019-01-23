@@ -7,6 +7,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.event.entity.player.*;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
 import java.io.IOException;
 
 public class PlayerEventPublish {
@@ -18,6 +21,7 @@ public class PlayerEventPublish {
 		AdapterPublisher.publishJson(playerJson);
 	}
 
+	@SideOnly(Side.SERVER)
 	@SubscribeEvent
 	public void onPlayerAttackEntity(AttackEntityEvent event) throws IOException {
 		JsonObject playerJson = EventJson.getPlayerJson("attack", event);
@@ -26,6 +30,7 @@ public class PlayerEventPublish {
 		AdapterPublisher.publishJson(playerJson);
 	}
 
+	@SideOnly(Side.SERVER)
 	@SubscribeEvent
 	public void onPlayerCriticalHit(CriticalHitEvent event) throws IOException {
 		if (event.isVanillaCritical()) {
@@ -68,6 +73,7 @@ public class PlayerEventPublish {
 		AdapterPublisher.publishJson(playerJson);
 	}
 
+	@SideOnly(Side.SERVER)
 	@SubscribeEvent
 	public void onPlayerLeftClick(PlayerInteractEvent.LeftClickBlock event) throws IOException {
 		JsonObject playerJson = EventJson.getPlayerJson("left_click", event);
@@ -77,6 +83,7 @@ public class PlayerEventPublish {
 		AdapterPublisher.publishJson(playerJson);
 	}
 
+	@SideOnly(Side.SERVER)
 	@SuppressWarnings("Duplicates")
 	@SubscribeEvent
 	public void onPlayerRightClick(PlayerInteractEvent.RightClickBlock event) throws IOException {
